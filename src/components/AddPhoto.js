@@ -5,14 +5,14 @@ class AddPhoto extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '3',
+      id: '',
       description: '',
       imageLink: '',
     };
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ id: Number(new Date()), [e.target.name]: e.target.value });
   };
 
   handleSubmit = (e) => {

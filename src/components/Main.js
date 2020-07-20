@@ -31,11 +31,19 @@ class Main extends Component {
     };
   }
 
+  removePhoto = (postRemoved) => {
+    this.setState((prevState) => {
+      return {
+        posts: prevState.posts.filter((post) => post.id !== postRemoved.id),
+      };
+    });
+  };
+
   render() {
     return (
       <div>
         <Title title={'Photo Wall'} />
-        <PhotoWall posts={this.state.posts} />
+        <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} />
       </div>
     );
   }

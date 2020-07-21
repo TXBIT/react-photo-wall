@@ -19,7 +19,7 @@ import Main from './Main';
 
 const App = withRouter(
   connect(
-    (state) => ({ posts: state }), // mapStateToProps
+    (state) => ({ posts: state.posts, comments: state.comments }), // mapStateToProps
     (dispatch) => bindActionCreators(actions, dispatch) // mapDispatchToProps
   )(Main)
 );

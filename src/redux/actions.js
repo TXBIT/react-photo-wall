@@ -11,3 +11,10 @@ export const addPost = (post) => {
     post,
   };
 };
+
+export const addComment = (comment) => {
+  return {
+    type: 'ADD_COMMENT',
+    comment,
+  };
+};

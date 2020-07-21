@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Photo from './Photo';
 
 const PhotoWall = (props) => {
-  const { posts, onRemovePhoto } = props;
+  const { posts } = props;
   return (
     <div>
       <Link className="add-icon" to="/add-photo"></Link>
@@ -13,7 +13,7 @@ const PhotoWall = (props) => {
         {posts
           .sort((x, y) => y.id - x.id)
           .map((post, index) => (
-            <Photo key={index} post={post} onRemovePhoto={onRemovePhoto} />
+            <Photo key={index} post={post} />
           ))}
       </div>
     </div>
@@ -22,7 +22,6 @@ const PhotoWall = (props) => {
 
 PhotoWall.propTypes = {
   posts: PropTypes.array.isRequired,
-  onRemovePhoto: PropTypes.func.isRequired,
 };
 
 export default PhotoWall;

@@ -11,7 +11,13 @@ const Photo = (props) => {
         <p>{post.description}</p>
       </figcaption>
       <div className="button-container">
-        <button>Remove</button>
+        <button
+          onClick={() => {
+            props.removePost(1);
+          }}
+        >
+          Remove
+        </button>
       </div>
     </figure>
   );

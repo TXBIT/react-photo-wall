@@ -5,14 +5,14 @@ import Comments from './Comments';
 
 class Single extends Component {
   render() {
-    const { match, posts } = this.props;
+    const { match, posts, comments } = this.props;
     const id = Number(match.params.id);
     const post = posts.find((post) => post.id === id);
     console.log(post);
     return (
       <div className="single-photo">
         <Photo post={post} index={id} />
-        <Comments />
+        <Comments addComment={this.props.addComment} comments={comments} />
       </div>
     );
   }
@@ -21,6 +21,7 @@ class Single extends Component {
 Single.propTypes = {
   match: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
+  comments: PropTypes.array.isRequired,
 };
 
 export default Single;

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removePost } from '../redux/actions';
+import * as actions from '../redux/actions';
+import { withRouter } from 'react-router';
 
 import Main from './Main';
 
@@ -16,9 +17,11 @@ import Main from './Main';
 
 // const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
-const App = connect(
-  (state) => ({ posts: state }), // mapStateToProps
-  (dispatch) => bindActionCreators({ removePost }, dispatch) // mapDispatchToProps
-)(Main);
+const App = withRouter(
+  connect(
+    (state) => ({ posts: state }), // mapStateToProps
+    (dispatch) => bindActionCreators(actions, dispatch) // mapDispatchToProps
+  )(Main)
+);
 
 export default App;

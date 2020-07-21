@@ -1,6 +1,13 @@
-export const removePost = (post) => {
+export const removePost = (index) => {
   return {
     type: 'REMOVE_POST',
-    index: post,
+    index,
+  };
+};
+
+export const addPost = (post) => {
+  return {
+    type: 'ADD_POST',
+    post,
   };
 };

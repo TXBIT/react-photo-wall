@@ -17,13 +17,13 @@ class AddPhoto extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onAddPhoto(this.state);
+    this.props.addPost(this.state);
+    this.props.onHistory.push('/');
   };
 
   render() {
     return (
       <div>
-        <h1>Photo Wall</h1>;
         <div className="form">
           <form onSubmit={this.handleSubmit}>
             <input
@@ -49,7 +49,7 @@ class AddPhoto extends Component {
 }
 
 AddPhoto.propTypes = {
-  onAddPhoto: PropTypes.func.isRequired,
+  onHistory: PropTypes.object.isRequired,
 };
 
 export default AddPhoto;

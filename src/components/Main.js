@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import Title from './Title';
 import PhotoWall from './PhotoWall';
 import AddPhoto from './AddPhoto';
+import Single from './Single';
 
 class Main extends Component {
   render() {
@@ -28,6 +29,10 @@ class Main extends Component {
           render={({ history }) => (
             <AddPhoto {...this.props} onHistory={history} />
           )}
+        />
+        <Route
+          path="/single/:id"
+          render={(params) => <Single {...this.props} {...params} />}
         />
       </div>
     );

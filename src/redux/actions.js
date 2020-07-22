@@ -12,9 +12,10 @@ export const addPost = (post) => {
   };
 };
 
-export const addComment = (comment) => {
+export const addComment = (comment, postId) => {
   return {
     type: 'ADD_COMMENT',
     comment,
+    postId,
   };
 };

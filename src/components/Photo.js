@@ -17,6 +17,7 @@ const Photo = (props) => {
         <button
           onClick={() => {
             props.removePost(index);
+            props.history.push('/');
           }}
         >
           Remove

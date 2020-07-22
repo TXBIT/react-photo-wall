@@ -8,11 +8,15 @@ class Single extends Component {
     const { match, posts, comments } = this.props;
     const id = Number(match.params.id);
     const post = posts.find((post) => post.id === id);
-    console.log(post);
+    const index = posts.findIndex((post) => post.id === id);
     return (
       <div className="single-photo">
-        <Photo post={post} index={id} />
-        <Comments addComment={this.props.addComment} comments={comments} />
+        <Photo post={post} {...this.props} index={index} />
+        <Comments
+          addComment={this.props.addComment}
+          comments={comments[id] || []}
+          id={id}
+        />
       </div>
     );
   }
@@ -21,7 +25,7 @@ class Single extends Component {
 Single.propTypes = {
   match: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  comments: PropTypes.array.isRequired,
+  comments: PropTypes.object.isRequired,
 };
 
 export default Single;

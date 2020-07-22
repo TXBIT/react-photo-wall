@@ -1,17 +1,24 @@
 import _posts from '../data/posts';
 import { combineReducers } from 'redux';
 
-const comments = (state = [], action) => {
+const comments = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_COMMENT':
-      return [...state, action.comment];
+      if (!state[action.postId]) {
+        return { ...state, [action.postId]: [action.comment] };
+      } else {
+        return {
+          ...state,
+          [action.postId]: [...state[action.postId], action.comment],
+        };
+      }
+
     default:
       return state;
   }
 };
 
 const posts = (state = _posts, action) => {
-  console.log('posts reducer');
   switch (action.type) {
     case 'REMOVE_POST':
       return [

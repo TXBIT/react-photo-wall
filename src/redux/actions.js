@@ -20,6 +20,13 @@ export const startLoadingPost = () => (dispatch) =>
     })
     .catch((error) => console.log(error));
 
+export const startRemovingPost = (index, id) => (dispatch) =>
+  database
+    .ref(`posts/${id}`)
+    .remove()
+    .then(() => dispatch(removePost(index)))
+    .catch((error) => console.log(error));
+
 export const removePost = (index) => {
   return {
     type: 'REMOVE_POST',

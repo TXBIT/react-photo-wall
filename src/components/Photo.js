@@ -16,7 +16,7 @@ const Photo = (props) => {
       <div className="button-container">
         <button
           onClick={() => {
-            props.removePost(index);
+            props.startRemovingPost(index, post.id);
             props.history.push('/');
           }}
         >

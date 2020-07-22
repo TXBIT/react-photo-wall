@@ -9,16 +9,23 @@ class Single extends Component {
     const id = Number(match.params.id);
     const post = posts.find((post) => post.id === id);
     const index = posts.findIndex((post) => post.id === id);
-    return (
-      <div className="single-photo">
-        <Photo post={post} {...this.props} index={index} />
-        <Comments
-          startAddingComment={this.props.startAddingComment}
-          comments={comments[id] || []}
-          id={id}
-        />
-      </div>
-    );
+
+    if (this.props.loading) {
+      return <div className="loader">Loading...</div>;
+    } else if (post) {
+      return (
+        <div className="single-photo">
+          <Photo post={post} {...this.props} index={index} />
+          <Comments
+            startAddingComment={this.props.startAddingComment}
+            comments={comments[id] || []}
+            id={id}
+          />
+        </div>
+      );
+    } else {
+      return <h1>No post found...</h1>;
+    }
   }
 }
 

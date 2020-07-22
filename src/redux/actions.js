@@ -34,6 +34,27 @@ export const startAddingComment = (comment, postId) => (dispatch) =>
     .then(() => dispatch(addComment(comment, postId)))
     .catch((error) => console.log(error));
 
+export const startLoadingComment = () => (dispatch) =>
+  database
+    .ref('comments')
+    .once('value')
+    .then((snapshot) => {
+      let comments = [];
+      snapshot.forEach(
+        (childSnapshot) =>
+          (comments[childSnapshot.key] = Object.values(childSnapshot.val()))
+      );
+      dispatch(comments);
+    })
+    .catch();
+
+export const loadComments = (comments) => {
+  return {
+    type: 'LOAD_COMMENTS',
+    comments,
+  };
+};
+
 export const removePost = (index) => {
   return {
     type: 'REMOVE_POST',

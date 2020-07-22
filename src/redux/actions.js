@@ -27,6 +27,13 @@ export const startRemovingPost = (index, id) => (dispatch) =>
     .then(() => dispatch(removePost(index)))
     .catch((error) => console.log(error));
 
+export const startAddingComment = (comment, postId) => (dispatch) =>
+  database
+    .ref(`comments/${postId}`)
+    .push(comment)
+    .then(() => dispatch(addComment(comment, postId)))
+    .catch((error) => console.log(error));
+
 export const removePost = (index) => {
   return {
     type: 'REMOVE_POST',

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 
-import Title from './Title';
 import PhotoWall from './PhotoWall';
 import AddPhoto from './AddPhoto';
 import Single from './Single';
 
 class Main extends Component {
+  componentDidMount() {
+    this.props.startLoadingPost();
+  }
   render() {
     return (
       <div>

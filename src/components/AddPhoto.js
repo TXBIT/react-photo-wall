@@ -17,7 +17,7 @@ class AddPhoto extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addPost(this.state);
+    this.props.startAddingPost(this.state);
     this.props.onHistory.push('/');
   };
 

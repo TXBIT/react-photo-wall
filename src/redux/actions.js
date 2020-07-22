@@ -9,6 +9,17 @@ export const startAddingPost = (post) => (dispatch) =>
     })
     .catch((error) => console.log(error));
 
+export const startLoadingPost = () => (dispatch) =>
+  database
+    .ref('posts')
+    .once('value')
+    .then((snapshot) => {
+      let posts = [];
+      snapshot.forEach((childSnapshot) => posts.push(childSnapshot.val()));
+      dispatch(loadPosts(posts));
+    })
+    .catch((error) => console.log(error));
+
 export const removePost = (index) => {
   return {
     type: 'REMOVE_POST',
@@ -28,5 +39,12 @@ export const addComment = (comment, postId) => {
     type: 'ADD_COMMENT',
     comment,
     postId,
+  };
+};
+
+export const loadPosts = (posts) => {
+  return {
+    type: 'LOAD_POSTS',
+    posts,
   };
 };
